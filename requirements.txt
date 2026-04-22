@@ -1,0 +1,11 @@
+# Core GUI Framework
+eel==0.14.0
+
+# Excel Manipulation
+xlwings==0.30.10
+
+# Image Processing
+Pillow==10.0.0
+
+# Additional utilities
+python-dotenv==1.0.0

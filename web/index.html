@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Image Insert</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Excel Image Insert</h1>
+            <p class="subtitle">Insert images into Excel files with ease</p>
+        </header>
+
+        <main>
+            <!-- Excel File Section -->
+            <section class="section">
+                <h2>1. Select Excel File</h2>
+                <div class="form-group">
+                    <input type="text" id="excelFilePath" placeholder="No file selected" readonly>
+                    <button onclick="selectExcelFile()" class="btn btn-primary">Browse</button>
+                </div>
+                <div id="sheetsContainer" class="hidden">
+                    <label for="sheetSelect">Select Sheet:</label>
+                    <select id="sheetSelect">
+                        <option value="">Choose a sheet...</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- Image Selection Section -->
+            <section class="section">
+                <h2>2. Select Images</h2>
+                <div class="form-group">
+                    <button onclick="selectImages()" class="btn btn-primary">Add Images</button>
+                    <button onclick="clearImages()" class="btn btn-secondary">Clear All</button>
+                </div>
+
+                <!-- Images List -->
+                <div class="images-container">
+                    <h3>Selected Images</h3>
+                    <div id="imagesList" class="images-list">
+                        <p class="empty-message">No images selected</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cell Position Section - FLOATING PANEL -->
+            <section class="section floating-panel" id="floatingPanel">
+                <div class="floating-panel-header">
+                    <h3>Image Position & Insert</h3>
+                    <button onclick="toggleFloatingPanel()" class="btn-close" title="Minimize/Maximize">−</button>
+                </div>
+                
+                <div class="floating-panel-content" id="floatingPanelContent">
+                    <div class="form-group">
+                        <label for="cellPosition">Cell Position:</label>
+                        <input type="text" id="cellPosition" placeholder="A1 or A1:C5" maxlength="20">
+                        <button onclick="selectRangeFromExcel()" class="btn btn-info btn-sm" title="Select cells directly in Excel">Select Range</button>
+                    </div>
+                    <p class="help-text">💡 Click "Select Range" to pick cells in Excel</p>
+                    
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="autoSizeCheckbox" checked>
+                            Auto-fit to cell
+                        </label>
+                    </div>
+                    
+                    <!-- Progress Bar -->
+                    <div class="progress-container hidden" id="progressContainer">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <p class="progress-text" id="progressText">Initializing...</p>
+                    </div>
+                    
+                    <!-- Insert Button -->
+                    <button onclick="insertImages()" class="btn btn-success btn-block" id="insertBtn">
+                        ▶ RUN (Insert Images)
+                    </button>
+                </div>
+            </section>
+
+            <!-- Status/Log Section -->
+            <section class="section">
+                <h2>Status & Logs</h2>
+                <div class="log-container">
+                    <div id="logOutput" class="log-output">
+                        <p class="log-info">[Waiting for input...]</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Excel Image Insert | Clean Architecture with Eel</p>
+        </footer>
+    </div>
+
+    <script src="eel.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
